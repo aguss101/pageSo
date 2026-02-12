@@ -1,0 +1,124 @@
+:root {
+    --verde-fondo: #05120a;
+    --verde-card: rgba(13, 40, 24, 0.45);
+    --verde-acento: #2d6a4f;      
+    --verde-brillante: #74c69d;   
+    --texto: #d8f3dc;
+    --glow: rgba(116, 198, 157, 0.3);
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(5, 18, 10, 0.6), rgba(5, 18, 10, 0.6)), url("Fotito.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: var(--texto);
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    padding: 3rem;
+    background-color: rgba(13, 40, 24, 0.35);
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    max-width: 450px;
+    width: 85%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.botones {
+    width: 100%;
+    position: relative;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-si {
+    background-color: var(--verde-acento);
+    color: white;
+    box-shadow: 0 0 15px var(--glow);
+    z-index: 2;
+}
+
+.btn-si:hover {
+    background-color: var(--verde-brillante);
+    color: var(--verde-fondo);
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--verde-brillante);
+}
+
+.btn-no {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--texto);
+    border: 1px solid var(--verde-acento);
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+    transition: all 0.5s ease;
+}
+.mensajes {
+    margin: -1.2rem 0 1.5rem;
+    min-height: 24px; /* para que no “salte” el layout */
+    font-size: 1.05rem;
+    opacity: 0.95;
+    color: var(--texto);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
+}
+
+.pop {
+    animation: popMsg 0.35s ease;
+}
+
+@keyframes popMsg {
+    0% { transform: scale(0.95); opacity: 0.2; }
+    100% { transform: scale(1); opacity: 1; }
+}
