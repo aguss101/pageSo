@@ -122,3 +122,84 @@ h1 {
     0% { transform: scale(0.95); opacity: 0.2; }
     100% { transform: scale(1); opacity: 1; }
 }
+/* =========================
+   RESPONSIVE (Android / iPhone)
+   Pegá esto al FINAL del CSS
+   ========================= */
+
+/* Fix: 100vh en mobile (Safari iOS) */
+body {
+  min-height: 100vh;
+  min-height: 100svh; /* usa el alto real visible del viewport en móviles modernos */
+}
+
+/* Contenedor: que no quede enorme ni apretado */
+.container {
+  width: min(92vw, 450px);
+  padding: clamp(1.2rem, 4vw, 3rem);
+}
+
+/* Texto: escala bien según pantalla */
+h1 {
+  font-size: clamp(1.15rem, 4.5vw, 1.8rem);
+  margin-bottom: clamp(1rem, 3vw, 2.5rem);
+}
+
+.mensajes {
+  font-size: clamp(0.95rem, 3.8vw, 1.05rem);
+}
+
+/* Botones: que se adapten y no se desborden */
+.btn {
+  font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+  padding: 12px clamp(18px, 6vw, 40px);
+}
+
+/* ---------- Breakpoint: móviles comunes (<= 480px) ---------- */
+@media (max-width: 480px) {
+  /* iOS/Android: mejor sin fixed para el fondo */
+  body {
+    background-attachment: scroll;
+  }
+
+  .container {
+    border-radius: 18px;
+  }
+
+  /* En móviles: los botones apilados se ven mejor */
+  .botones {
+    height: 190px;              /* más alto para que el NO tenga espacio */
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  /* Que el SI sea fácil de tocar (accesibilidad) */
+  .btn-si {
+    width: min(92%, 320px);
+  }
+
+  /* El NO lo movemos dentro del área, pero con ancho fijo para calcular bien */
+  .btn-no {
+    width: min(78%, 280px);
+  }
+}
+
+/* ---------- Breakpoint: pantallas MUY chicas (<= 360px) ---------- */
+@media (max-width: 360px) {
+  .botones {
+    height: 210px;
+  }
+
+  .btn {
+    padding: 11px 18px;
+  }
+}
+
+/* Opcional: si el usuario tiene "reducir movimiento" activado */
+@media (prefers-reduced-motion: reduce) {
+  .btn, .hidden, .pop {
+    transition: none !important;
+    animation: none !important;
+  }
+}
