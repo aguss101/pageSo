@@ -203,3 +203,65 @@ h1 {
     animation: none !important;
   }
 }
+
+/* ===== Fix base para mobile ===== */
+* { box-sizing: border-box; }
+
+@media (max-width: 600px) {
+
+  /* Evita problemas de altura en mobile */
+  body{
+    min-height: 100svh;
+    background-attachment: scroll;
+  }
+
+  /* Recuadro más grande y legible */
+  .container{
+    width: 94vw;              /* más ancho en mobile */
+    max-width: 520px;         /* por si hay pantallas grandes */
+    padding: 1.6rem 1.2rem;   /* menos padding lateral excesivo */
+    min-height: 320px;        /* fuerza tamaño mínimo real */
+  }
+
+  /* Texto principal más grande */
+  h1{
+    font-size: 1.35rem;
+    margin-bottom: 1.1rem;
+    line-height: 1.25;
+  }
+
+  /* Mensajes: visibles */
+  .mensajes{
+    font-size: 1.05rem;
+    margin: -0.4rem 0 1rem;
+    min-height: 28px;
+  }
+
+  /* Área de botones: más alta para mover el NO sin desaparecer */
+  .botones{
+    height: 240px;           /* MÁS espacio real */
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Botones: tamaño táctil */
+  .btn{
+    width: min(90%, 340px);  /* ancho cómodo */
+    min-height: 48px;        /* touch friendly */
+    font-size: 1.05rem;
+    padding: 14px 20px;
+  }
+
+  /* El NO sigue moviéndose dentro del contenedor (absolute) */
+  .btn-no{
+    width: min(82%, 320px);
+  }
+}
+
+/* Extra: pantallas muy chicas */
+@media (max-width: 360px){
+  .container{ padding: 1.4rem 1rem; }
+  h1{ font-size: 1.25rem; }
+  .botones{ height: 260px; }
+}
+
